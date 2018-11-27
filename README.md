@@ -1,8 +1,4 @@
-[![Build](https://travis-ci.org/FolmPHP/FolmECDSA.php.svg?branch=master)](https://travis-ci.org/FolmPHP/FolmECDSA.php) &nbsp;
-[![Quality Score](https://scrutinizer-ci.com/g/FolmPHP/FolmECDSA.php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/FolmPHP/FolmECDSA.php/?branch=master) &nbsp;
-[![Latest Stable Version](https://poser.pugx.org/folm/folmecdsa/v/stable.svg)](https://packagist.org/packages/folm/folmecdsa) &nbsp;
-[![Downloads](http://img.shields.io/packagist/dt/folm/folmecdsa.svg?style=flat)](https://packagist.org/packages/folm/folmecdsa)
-
+##Folm Coin Wallet Generator in PHP
 
 WARNING
 ===============
