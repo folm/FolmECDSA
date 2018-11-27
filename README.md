@@ -1,4 +1,4 @@
-##Folm Coin Wallet Generator in PHP
+## Folm Coin Wallet Generator in PHP
 
 WARNING
 ===============
