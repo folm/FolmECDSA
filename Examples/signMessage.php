@@ -1,14 +1,14 @@
 <?php
 
-require_once '../src/BitcoinPHP/BitcoinECDSA/BitcoinECDSA.php';
+require_once '../src/FolmPHP/FolmECDSA/FolmECDSA.php';
 
-use BitcoinPHP\BitcoinECDSA\BitcoinECDSA;
+use FolmPHP\FolmECDSA\FolmECDSA;
 
-$bitcoinECDSA = new BitcoinECDSA();
-$bitcoinECDSA->generateRandomPrivateKey(); //generate new random private key
+$folmECDSA = new FolmECDSA();
+$folmECDSA->generateRandomPrivateKey(); //generate new random private key
 
 $message = "Test message";
-$signedMessage = $bitcoinECDSA->signMessage($message);
+$signedMessage = $folmECDSA->signMessage($message);
 
 echo "signed message:" . PHP_EOL;
 echo $signedMessage . PHP_EOL;
@@ -26,7 +26,7 @@ HxTqM+b3xj2Qkjhhl+EoUpYsDUz+uTdz6RCY7Z4mV62yOXJ3XCAfkiHV+HGzox7Ba/OC6bC0y6zBX0Gh
 
 
 // If you only want the signature you can do this
-$signature = $bitcoinECDSA->signMessage($message, true);
+$signature = $folmECDSA->signMessage($message, true);
 
 echo "signature:" . PHP_EOL;
 echo $signature . PHP_EOL;

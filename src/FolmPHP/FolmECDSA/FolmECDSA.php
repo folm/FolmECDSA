@@ -5,13 +5,13 @@
  * @author Jan Moritz Lindemann
  */
 
-namespace BitcoinPHP\BitcoinECDSA;
+namespace FolmPHP\FolmECDSA;
 
 if (!extension_loaded('gmp')) {
     throw new \Exception('GMP extension seems not to be installed');
 }
 
-class BitcoinECDSA
+class FolmECDSA
 {
 
     public $k;
@@ -34,12 +34,12 @@ class BitcoinECDSA
                     'y' => gmp_init('32670510020758816978083085130507043184471273380659243275938904335757337482424')
                    ];
 
-        $this->networkPrefix = '00';
+        $this->networkPrefix = '24';
     }
 
     /***
      * Convert a number to a compact Int
-     * taken from https://github.com/scintill/php-bitcoin-signature-routines/blob/master/verifymessage.php
+     * taken from https://github.com/scintill/php-folmsignature-routines/blob/master/verifymessage.php
      *
      * @param int $i
      * @return string (bin)
@@ -86,7 +86,7 @@ class BitcoinECDSA
         if($this->networkPrefix =='6f')
             return 'ef';
         else
-           return '80';
+           return 'b2';
     }
 
     /***
@@ -126,7 +126,7 @@ class BitcoinECDSA
     }
 
     /***
-     * Bitcoin standard 256 bit hash function : double sha256
+     * Folm standard 256 bit hash function : double sha256
      *
      * @param string $data
      * @return string (hexa)
@@ -270,7 +270,7 @@ class BitcoinECDSA
         $gcd = gmp_strval(gmp_gcd(gmp_mod(gmp_mul(gmp_init(2, 10), $pt['y']), $p),$p));
         if($gcd !== '1')
         {
-            throw new \Exception('This library doesn\'t yet supports point at infinity. See https://github.com/BitcoinPHP/BitcoinECDSA.php/issues/9');
+            throw new \Exception('This library doesn\'t yet supports point at infinity. See https://github.com/FolmPHP/FolmECDSA.php/issues/9');
         }
 
         // SLOPE = (3 * ptX^2 + a )/( 2*ptY )
@@ -349,7 +349,7 @@ class BitcoinECDSA
         $gcd = gmp_strval(gmp_gcd(gmp_sub($pt1['x'], $pt2['x']), $p));
         if($gcd !== '1')
         {
-            throw new \Exception('This library doesn\'t yet supports point at infinity. See https://github.com/BitcoinPHP/BitcoinECDSA.php/issues/9');
+            throw new \Exception('This library doesn\'t yet supports point at infinity. See https://github.com/FolmPHP/FolmECDSA.php/issues/9');
         }
 
         // SLOPE = (pt1Y - pt2Y)/( pt1X - pt2X )
@@ -708,7 +708,7 @@ class BitcoinECDSA
     }
 
     /***
-     * returns the uncompressed Bitcoin address generated from the private key if $compressed is false and
+     * returns the uncompressed Folm address generated from the private key if $compressed is false and
      * the compressed if $compressed is true.
      *
      * @param bool $compressed
@@ -750,7 +750,7 @@ class BitcoinECDSA
     }
 
     /***
-     * returns the compressed Bitcoin address generated from the private key.
+     * returns the compressed Folm address generated from the private key.
      *
      * @param string $derPubKey (hexa)
      * @return String (base58)
@@ -1001,7 +1001,7 @@ class BitcoinECDSA
     public function signMessage($message, $onlySignature = false ,$compressed = true, $nonce = null)
     {
 
-        $hash   = $this->hash256("\x18Bitcoin Signed Message:\n" . $this->numToVarIntString(strlen($message)). $message);
+        $hash   = $this->hash256("\x18Folm Signed Message:\n" . $this->numToVarIntString(strlen($message)). $message);
         $points = $this->getSignatureHashPoints(
                                                 $hash,
                                                 $nonce
@@ -1063,7 +1063,7 @@ class BitcoinECDSA
     /***
      * extract the public key from the signature and using the recovery flag.
      * see http://crypto.stackexchange.com/a/18106/10927
-     * based on https://github.com/brainwallet/brainwallet.github.io/blob/master/js/bitcoinsig.js
+     * based on https://github.com/brainwallet/brainwallet.github.io/blob/master/js/folmsig.js
      * possible public keys are r−1(sR−zG) and r−1(sR′−zG)
      * Recovery flag rules are :
      * binary number between 28 and 35 inclusive
@@ -1255,7 +1255,7 @@ class BitcoinECDSA
     }
 
     /***
-     * checks the signature of a bitcoin signed message.
+     * checks the signature of a folm signed message.
      *
      * @param string $rawMessage
      * @return bool
@@ -1274,7 +1274,7 @@ class BitcoinECDSA
     }
 
     /***
-     * checks the signature of a bitcoin signed message.
+     * checks the signature of a folm signed message.
      *
      * @param string $address (base58)
      * @param string $encodedSignature (base64)
@@ -1283,7 +1283,7 @@ class BitcoinECDSA
      */
     public function checkSignatureForMessage($address, $encodedSignature, $message)
     {
-        $hash = $this->hash256("\x18Bitcoin Signed Message:\n" . $this->numToVarIntString(strlen($message)) . $message);
+        $hash = $this->hash256("\x18Folm Signed Message:\n" . $this->numToVarIntString(strlen($message)) . $message);
 
         //recover flag
         $signature = base64_decode($encodedSignature);

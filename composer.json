@@ -1,15 +1,15 @@
 {
-    "name": "bitcoin-php/bitcoin-ecdsa",
+    "name": "folm/folm-ecdsa",
     "type": "library",
-    "description": "PHP library allowing to generate BTC addresses from private keys",
-    "keywords": ["ECDSA","Bitcoin"],
-    "homepage": "https://github.com/BitcoinPHP/BitcoinECDSA.php",
+    "description": "PHP library allowing to generate FLM addresses from private keys",
+    "keywords": ["ECDSA","Folm"],
+    "homepage": "https://github.com/folm/FolmECDSA.php",
     "license": "unlicense",
     "authors": [
         {
-            "name": "BitcoinPHP",
-            "email": "panda@panda.cat",
-            "homepage": "http://github.com/BitcoinPHP",
+            "name": "folm",
+            "email": "dev@folm.io",
+            "homepage": "http://github.com/folm",
             "role": "Developer"
         }
     ],
@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-0": {
-            "BitcoinPHP\\BitcoinECDSA": "src"
+            "FolmPHP\\FolmECDSA": "src"
         }
     },
     "require-dev": {

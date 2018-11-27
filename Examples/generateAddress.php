@@ -1,16 +1,16 @@
 <?php
 
-require_once '../src/BitcoinPHP/BitcoinECDSA/BitcoinECDSA.php';
+require_once '../src/FolmPHP/FolmECDSA/FolmECDSA.php';
 
-use BitcoinPHP\BitcoinECDSA\BitcoinECDSA;
+use FolmPHP\FolmECDSA\FolmECDSA;
 
-$bitcoinECDSA = new BitcoinECDSA();
-$bitcoinECDSA->generateRandomPrivateKey(); //generate new random private key
-$address = $bitcoinECDSA->getAddress(); //compressed Bitcoin address
+$folmECDSA = new FolmECDSA();
+$folmECDSA->generateRandomPrivateKey(); //generate new random private key
+$address = $folmECDSA->getAddress(); //compressed Folm address
 echo "Address: " . $address . PHP_EOL;
 
 //Validate an address (Verify the checksum)
-if($bitcoinECDSA->validateAddress($address)) {
+if($folmECDSA->validateAddress($address)) {
     echo "The address is valid" . PHP_EOL;
 } else {
     echo "The address is invalid" . PHP_EOL;

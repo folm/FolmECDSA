@@ -1,24 +1,24 @@
 <?php
 
-require_once '../src/BitcoinPHP/BitcoinECDSA/BitcoinECDSA.php';
+require_once '../src/FolmPHP/FolmECDSA/FolmECDSA.php';
 
-use BitcoinPHP\BitcoinECDSA\BitcoinECDSA;
+use FolmPHP\FolmECDSA\FolmECDSA;
 
-$bitcoinECDSA = new BitcoinECDSA();
-$bitcoinECDSA->generateRandomPrivateKey(); //generate new random private key
+$folmECDSA = new FolmECDSA();
+$folmECDSA->generateRandomPrivateKey(); //generate new random private key
 
-$wif = $bitcoinECDSA->getWif();
-$address = $bitcoinECDSA->getAddress();
+$wif = $folmECDSA->getWif();
+$address = $folmECDSA->getAddress();
 echo "Address : " . $address . PHP_EOL;
 echo "WIF : " . $wif . PHP_EOL;
 
-unset($bitcoinECDSA); //destroy instance
+unset($folmECDSA); //destroy instance
 
 //import wif
-$bitcoinECDSA = new BitcoinECDSA();
-if($bitcoinECDSA->validateWifKey($wif)) {
-    $bitcoinECDSA->setPrivateKeyWithWif($wif);
-    $address = $bitcoinECDSA->getAddress();
+$folmECDSA = new FolmECDSA();
+if($folmECDSA->validateWifKey($wif)) {
+    $folmECDSA->setPrivateKeyWithWif($wif);
+    $address = $folmECDSA->getAddress();
     echo "imported address : " . $address . PHP_EOL;
 } else {
     echo "invalid WIF key" . PHP_EOL;

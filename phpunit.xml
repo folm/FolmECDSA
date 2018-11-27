@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="src/BitcoinPHP/Tests/BootStrap.php" colors="true">
+<phpunit bootstrap="src/FolmPHP/Tests/BootStrap.php" colors="true">
     <testsuites>
         <testsuite name="All">
-            <file>src/BitcoinPHP/Tests/BitcoinECDSATest.php</file>
+            <file>src/FolmPHP/Tests/FolmECDSATest.php</file>
         </testsuite>
     </testsuites>
 
